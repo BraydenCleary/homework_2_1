@@ -12,11 +12,29 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
+    _myButton = [UIButton buttonWithType:UIButtonTypeSystem];
+    CGRect frame = CGRectMake(12, 44, 100, 24);
+    self.myButton.frame = frame;
+    [self.myButton setTitle:@"my first button"
+                   forState:UIControlStateNormal];
+    [self.myButton addTarget:self
+                      action:@selector(buttonHit:)
+            forControlEvents:UIControlEventTouchUpInside];
+    [self.window addSubview:self.myButton];
+    
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     return YES;
+    
+    
+}
+
+-(void)buttonHit:(id)sender
+{
+    [self.myButton setTitle:@"HIT" forState:UIControlStateNormal];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application
